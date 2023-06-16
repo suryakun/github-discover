@@ -21,7 +21,7 @@ This is a React application built with Vite, SWR, and uses the GitHub API to sea
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/suryakun/github-discover.git
 ```
 
 2. Install the dependencies:
@@ -32,7 +32,7 @@ npm install
 
 ## Usage
 
-1. Rename the `.env.example` file to `.env` and provide your GitHub API token. You can obtain a token from your GitHub account settings.
+1. Open the src/config/config.ts and provide your GitHub API token. You can obtain a token from your GitHub account settings.
 
 2. Start the development server:
 
@@ -49,10 +49,6 @@ To run the tests using Vitest and Testing Library, use the following command:
 ```bash
 npm run test
 ```
-
-## Credits
-
-This application was developed by [Your Name]. You can find the source code on [GitHub](https://github.com/your-username/your-repo).
 
 ## License
 
