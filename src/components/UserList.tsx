@@ -3,6 +3,7 @@ import useGithubAPI from "../hooks/useGithubAPI";
 import { GithubContext, GithubUser } from "../context/GithubContext";
 import Loader, { Spinner } from "./Loader";
 import Useritem from "./UserItem";
+import { EnableLoadMore } from "../config/config";
 
 type Props = {
   query: string;
@@ -16,7 +17,7 @@ export default function UserList({ query }: Props) {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        loadMoreUsers()
+        EnableLoadMore && loadMoreUsers()
       }
     }, {
       threshold: 1.0

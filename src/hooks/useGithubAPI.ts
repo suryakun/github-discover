@@ -2,6 +2,7 @@ import useSWRImmutable from 'swr/immutable';
 import { useCallback, useState, useContext, useEffect, useRef } from 'react';
 import { GithubToken } from '../config/config';
 import { GithubActionType, GithubContext, GithubUser } from '../context/GithubContext';
+import { LimitSearchUser } from '../config/config'
 
 type GithubResponse = {
   total_count: number;
@@ -14,8 +15,15 @@ export default function useGithubAPI(query: string = '') {
   const [loadMoreLoading, setLoadMoreLoading] = useState(false);
   const page = useRef(1);
 
+  const options: Record<string, string> = {}
+  if (LimitSearchUser > 0) {
+    options['page'] = '1'
+    options['per_page'] = LimitSearchUser.toString()
+  }
+
   const url = `https://api.github.com/search/users?${new URLSearchParams({
-    q: query
+    ...options,
+    q: query,
   })}`
 
   const fetcher = (url: string) => fetch(url, {
