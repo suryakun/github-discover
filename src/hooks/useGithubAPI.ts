@@ -1,6 +1,5 @@
 import useSWRImmutable from 'swr/immutable';
 import { useCallback, useState, useContext, useEffect, useRef } from 'react';
-import { GithubToken } from '../config/config';
 import { GithubActionType, GithubContext, GithubUser } from '../context/GithubContext';
 import { LimitSearchUser } from '../config/config'
 
@@ -29,7 +28,7 @@ export default function useGithubAPI(query: string = '') {
   const fetcher = (url: string) => fetch(url, {
     headers: {
       Accept: 'application/vnd.github.v3+json',
-      Authorization: `Bearer ${GithubToken}`,
+      Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN ?? ""}`,
       "X-GitHub-Api-Version": "2022-11-28"
     }
   })

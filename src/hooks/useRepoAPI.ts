@@ -1,5 +1,4 @@
 import useSWRImmutable from 'swr/immutable';
-import { GithubToken } from '../config/config';
 import { GithubRepo } from '../context/GithubContext';
 
 export default function useRepoAPI(url: string = '') {
@@ -7,7 +6,7 @@ export default function useRepoAPI(url: string = '') {
   const fetcher = (url: string) => fetch(url, {
     headers: {
       Accept: 'application/vnd.github.v3+json',
-      Authorization: `Bearer ${GithubToken}`,
+      Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN ?? ""}`,
       "X-GitHub-Api-Version": "2022-11-28"
     }
   })
